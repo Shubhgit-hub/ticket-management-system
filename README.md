@@ -1,70 +1,111 @@
-**Ticket Management System**
+# Ticket Management System
 
-This is a basic ticket management system built using FastAPI. It allows users to create and manage tickets, with separate routes for authentication, admin, and ticket operations.
+This is a simple Ticket Management System built using FastAPI. It allows users to create and manage tickets, while admins can manage all tickets and view stats.
 
-Features
-User authentication (login/signup)
-Create and manage tickets
-Admin-related functionality
-Simple frontend (HTML)
-FastAPI backend
-Docker support
-Tech Used
-Python (FastAPI)
-SQLite database
-Uvicorn server
-Docker
+---
 
+## Features
 
-**Project Structure**
-Ticket Management System/
+- User registration and login
+- JWT authentication
+- Role-based access (User and Admin)
+- Create, update, and delete tickets
+- Filter tickets by status and priority
+- Admin APIs for all tickets and statistics
+
+---
+
+## Tech Stack
+
+- Python (FastAPI)
+- SQLite
+- SQLAlchemy
+- JWT (Authentication)
+- Docker
+
+---
+
+## Project Structure
 
 app/
-  main.py
-  models.py
-  schemas.py
-  database.py
-  auth.py
-  dependencies.py
-  routers/
-    auth.py
-    admin.py
-    tickets.py
+  main.py  
+  auth.py  
+  database.py  
+  models.py  
+  schemas.py  
+  dependencies.py  
+  routers/  
+    auth.py  
+    tickets.py  
+    admin.py  
 
-frontend/
-  index.html
+frontend/  
+  index.html  
 
-test.db
-requirements.txt
-Dockerfile
-*How to Run*
-Run locally
-Install dependencies
+---
+
+## How to Run
+
+1. Install dependencies
+
 pip install -r requirements.txt
-Start server
+
+2. Run the server
+
 python -m uvicorn app.main:app --reload
-Open in browser
+
+3. Open in browser
+
 http://127.0.0.1:8000
 
-API docs:
+Swagger Docs:
 
 http://127.0.0.1:8000/docs
-***Run using Docker***
 
-.Build image:
+---
 
-.docker build -t ticket-system .
+## API Endpoints
 
-##Run container:
+### Auth
+POST /api/v1/auth/register  
+POST /api/v1/auth/login  
 
-.docker run -p 8001:8000 ticket-system
+### Tickets
+POST /api/v1/tickets  
+GET /api/v1/tickets  
+GET /api/v1/tickets/{id}  
+PUT /api/v1/tickets/{id}  
+PATCH /api/v1/tickets/{id}/status  
+DELETE /api/v1/tickets/{id}  
 
-Then open:
-http://localhost:8001
+### Admin
+GET /api/v1/admin/tickets  
+GET /api/v1/admin/stats  
 
-Notes:-If port 8000 is already in use, change the port while running Docker.
-Make sure Docker Desktop is running before building the image.
-Author
+---
 
-Shubham Yadav
+## Notes
+
+- Users can only access their own tickets  
+- Admin can access all tickets  
+- Passwords are stored in hashed format  
+- All protected routes require authentication  
+
+---
+
+## Docker
+
+Build image:
+
+docker build -t ticket-system .
+
+Run container:
+
+docker run -p 8001:8000 ticket-system
+
+---
+
+## Author
+
+Shubham Yadav  
 https://github.com/Shubhgit-hub
