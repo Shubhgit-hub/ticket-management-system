@@ -141,7 +141,7 @@ http://127.0.0.1:8000/docs  # IMPORTANT READ CAREFULLY
 
 ## 👨‍💻 Author
 
-* Developed by **Shubh**
+* Developed by **Shubham Yadav**
 
 ---
 
